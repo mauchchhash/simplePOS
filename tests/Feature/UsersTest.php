@@ -18,7 +18,7 @@ class UsersTest extends TestCase
   }
 
   /** @test */
-  public function user_can_visit_homepage(){
+  public function authenticated_user_can_visit_homepage(){
     $this->be(factory(User::class)->create());
     $this->get('/home')->assertStatus(200);
   }
