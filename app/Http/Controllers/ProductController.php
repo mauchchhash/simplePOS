@@ -35,6 +35,10 @@ class ProductController extends Controller
    */
   public function store(Request $request)
   {
+    Product::create(
+      request(['name', 'category', 'price'])
+    );
+
     return redirect('/home');
   }
 

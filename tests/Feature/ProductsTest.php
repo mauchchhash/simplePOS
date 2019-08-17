@@ -19,5 +19,7 @@ class ProductsTest extends TestCase
 
     $attributes = factory(Product::class)->raw();
     $this->post('/products', $attributes)->assertRedirect('/home');
+
+    $this->assertDatabaseHas('products', $attributes);
   }
 }

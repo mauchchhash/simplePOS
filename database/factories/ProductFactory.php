@@ -6,7 +6,9 @@ use App\Product;
 use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
-    return [
-        //
-    ];
+  return [
+    'name' => $faker->words(2,true),
+    'category' => $faker->word(),
+    'price' => $faker->randomDigit
+  ];
 });
