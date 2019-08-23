@@ -1,0 +1,9 @@
+tdd:
+  working on it:
+    user can sell products via invoices
+  invoice page will take input of money given by the customer and show the change money
+  user can see invoices based on specific date
+  user can see invoices based on date range
+  user can see reports based on specific date
+  user can see reports based on date range
+  user can see full reports
