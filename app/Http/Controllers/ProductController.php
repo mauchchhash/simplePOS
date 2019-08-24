@@ -38,7 +38,10 @@ class ProductController extends Controller
 
   public function update(Request $request, Product $product)
   {
-    //
+    $product->update(
+      request([ 'name', 'category', 'price' ])
+    );
+    return redirect('home');
   }
 
   public function destroy(Product $product)
