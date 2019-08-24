@@ -22,4 +22,18 @@ class ProductsTest extends TestCase
 
     $this->assertDatabaseHas('products', $attributes);
   }
+
+  /** @test */
+  public function authenticated_user_can_delete_products(){
+    $this->withoutExceptionHandling();
+    $this->be(factory(User::class)->create());
+
+    $attributes = factory(Product::class)->raw();
+    $this->post('/products', $attributes)->assertRedirect('/home');
+
+    $this->assertDatabaseHas('products', $attributes);
+
+    $product = Product::where('name', $attributes['name'])->first();
+    $this->delete($product->path(), $attributes)->assertRedirect('/home');
+  }
 }

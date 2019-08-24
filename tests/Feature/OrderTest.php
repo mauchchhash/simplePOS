@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Order;
 use App\Product;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -42,14 +43,15 @@ class OrderTest extends TestCase
     $quantity3 = $this->faker->randomDigit();
 
     $orderAttributes = [
-      [ 'product_id' => $id1, 'quantity' => $quantity1],
-      [ 'product_id' => $id2, 'quantity' => $quantity2],
-      [ 'product_id' => $id3, 'quantity' => $quantity3]
+      [ 'product_id' => $id1, 'quantity' => $quantity1, 'price' => $this->faker->randomDigit],
+      [ 'product_id' => $id2, 'quantity' => $quantity2, 'price' => $this->faker->randomDigit],
+      [ 'product_id' => $id3, 'quantity' => $quantity3, 'price' => $this->faker->randomDigit],
     ];
-    $this->post('/orders', $orderAttributes)->assertRedirect('/home');
+    $order = factory(Order::class)->create();
+    $this->post( $order->path(), $orderAttributes)->assertRedirect('/home');
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id1, 'quantity' => $quantity1]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id2, 'quantity' => $quantity2]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id3, 'quantity' => $quantity3]);
-
   }
+
 }

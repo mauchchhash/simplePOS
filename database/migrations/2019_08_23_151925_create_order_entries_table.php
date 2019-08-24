@@ -18,6 +18,7 @@ class CreateOrderEntriesTable extends Migration
             $table->bigInteger('order_id');
             $table->bigInteger('product_id');
             $table->bigInteger('quantity');
+            $table->bigInteger('price');
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
