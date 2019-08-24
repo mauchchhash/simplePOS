@@ -15,10 +15,10 @@ class CreateOrderEntriesTable extends Migration
     {
         Schema::create('order_entries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('order_id');
-            $table->bigInteger('product_id');
-            $table->bigInteger('quantity');
-            $table->bigInteger('price');
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('product_id');
+            $table->unsignedBigInteger('quantity');
+            $table->unsignedBigInteger('price');
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
