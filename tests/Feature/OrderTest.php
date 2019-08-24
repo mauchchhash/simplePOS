@@ -47,8 +47,9 @@ class OrderTest extends TestCase
       [ 'product_id' => $id2, 'quantity' => $quantity2, 'price' => $this->faker->randomDigit],
       [ 'product_id' => $id3, 'quantity' => $quantity3, 'price' => $this->faker->randomDigit],
     ];
-    $order = factory(Order::class)->create();
-    $this->post( $order->path(), $orderAttributes)->assertRedirect('/home');
+    $orderAttributes['total_amount'] = $this->faker->randomDigit;
+
+    $this->post( '/orders', $orderAttributes)->assertRedirect('/home');
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id1, 'quantity' => $quantity1]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id2, 'quantity' => $quantity2]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id3, 'quantity' => $quantity3]);

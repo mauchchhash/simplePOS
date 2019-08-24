@@ -23,4 +23,4 @@ Route::post('/products', 'ProductController@store');
 Route::delete('/products/{product}', 'ProductController@destroy');
 Route::patch('/products/{product}', 'ProductController@update');
 
-Route::post('/orders/{order}', 'OrderController@store');
+Route::post('/orders', 'OrderController@store');
