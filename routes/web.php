@@ -11,15 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::middleware('auth')->group(function(){
+
   Route::post('/products', 'ProductController@store');
   Route::delete('/products/{product}', 'ProductController@destroy');
   Route::patch('/products/{product}', 'ProductController@update');
