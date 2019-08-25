@@ -1,0 +1,54 @@
+/*
+ * Global styles
+ */
+
+ /*============= header */
+.header {
+  background: #2e2e2e;
+}
+
+.header .navbar {
+  background: #2e2e2e;
+}
+
+.header .navbar .navbar-brand {
+  color: #fff;
+}
+
+.header .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.header .navbar-nav .nav-link:hover {
+  color: #fafafa;
+}
+
+/*============= navigation */
+.navigation {
+  padding: 10px 0;
+  background: #e2e2e2;
+}
+
+.navigation .nav .nav-item .nav-link {
+  color: #2e2e2e;
+}
+
+.navigation .nav .nav-item.active .nav-link {
+  color: #2e2e2e;
+  font-weight: bold;
+}
+
+.navigation .nav .nav-item .nav-link:hover {
+  color: #585858;
+}
+
+/*============= footer */
+.footer {
+  background: #e2e2e2;
+  border-top: 1px solid #c9c9c9;
+  padding: 25px 0;
+}
+
+.footer p {
+  margin: 0;
+}
