@@ -20,6 +20,12 @@ class ProductTest extends TestCase
   }
 
   /** @test */
+  public function it_has_an_edit_path(){
+    $product = factory(Product::class)->create();
+    $this->assertEquals('/products/edit/'.$product->id, $product->edit_path());
+  }
+
+  /** @test */
   public function it_will_be_in_multiple_orders(){
     $product = factory(Product::Class)->create();
     $this->assertInstanceOf(Collection::class, $product->orders);

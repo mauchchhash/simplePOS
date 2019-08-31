@@ -13,6 +13,10 @@ class Product extends Model
     return '/products/' . $this->id;
   }
 
+  public function edit_path(){
+    return '/products/edit/' . $this->id;
+  }
+
   public function orders(){
     return $this->belongsToMany(Order::class, 'order_entries');
   }

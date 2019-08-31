@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
+  public function create(){
+    // return view('orders.create');
+  }
+
   public function store(){
     $order = Order::create( request(['total_amount']) );
     foreach( request()->all() as $request ){

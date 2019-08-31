@@ -22,9 +22,15 @@ Route::middleware('auth')->group(function(){
     return view('welcome');
   });
 
+  Route::get('/products', 'ProductController@index');
+  Route::get('/products/create', 'ProductController@create');
+  Route::get('/products/{product}', 'ProductController@show');
+  Route::get('/products/edit/{product}', 'ProductController@edit');
+
   Route::post('/products', 'ProductController@store');
   Route::delete('/products/{product}', 'ProductController@destroy');
   Route::patch('/products/{product}', 'ProductController@update');
 
+  Route::get('/orders/create', 'OrderController@create');
   Route::post('/orders', 'OrderController@store');
 });

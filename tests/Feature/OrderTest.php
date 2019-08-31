@@ -54,6 +54,11 @@ class OrderTest extends TestCase
   }
 
   /** @test */
+  public function guest_cant_goto_create_order_page(){
+    $this->get('/orders/create')->assertRedirect('/login');
+  }
+
+  /** @test */
   public function user_can_add_existing_products_in_an_order(){
     $this->withoutExceptionHandling();
     $this->be(factory(User::class)->create());
@@ -89,6 +94,13 @@ class OrderTest extends TestCase
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id1, 'quantity' => $quantity1]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id2, 'quantity' => $quantity2]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id3, 'quantity' => $quantity3]);
+  }
+
+  /** @test */
+  public function authenticated_user_can_goto_create_orders_page(){
+    $this->withoutExceptionHandling();
+    $this->be(factory(User::class)->create());
+    $this->get('/orders/create')->assertStatus(200);
   }
 
 }
