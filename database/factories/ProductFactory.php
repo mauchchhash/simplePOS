@@ -6,9 +6,10 @@ use App\Product;
 use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
+  $categoryArray = ['beverage', 'food', 'other'];
   return [
     'name' => $faker->words(2,true),
-    'category' => $faker->word(),
+    'category' => $categoryArray[$faker->randomDigit % 3],
     'price' => $faker->randomDigit
   ];
 });
