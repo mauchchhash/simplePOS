@@ -5,31 +5,31 @@
   <div class="row" id="pos-row">
     <div class="card-deck col-md-8" v-if="activeChoice == 'category'">
       <div class="card bg-primary col-md-9">
-        <!-- <a href="#"> -->
-        <div class="card-body text-center">
+        <a href="#">
+        <div class="card-body text-center" @click="setBeverage()">
           <br>
           <h2 class="card-text text-white">Beverages</h2>
           <br>
         </div>
-        <!-- </a> -->
+        </a>
       </div>
       <div class="card bg-warning">
-        <!-- <a href="#"> -->
-        <div class="card-body text-center">
+        <a href="#">
+        <div class="card-body text-center" @click="setFood()">
           <br>
           <h1 class="card-text text-dark">Foods</h1>
           <br>
         </div>
-        <!-- </a> -->
+        </a>
       </div>
       <div class="card bg-success">
-        <!-- <a href="#"> -->
-        <div class="card-body text-center">
+        <a href="#">
+        <div class="card-body text-center" @click="setOther()">
           <br>
           <h1 class="card-text text-white">Others</h1>
           <br>
         </div>
-        <!-- </a> -->
+        </a>
       </div>
     </div>
 
