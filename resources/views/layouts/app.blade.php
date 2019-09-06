@@ -45,10 +45,10 @@
               <!--   <a class="nav&#45;link" href="#">Disabled</a> -->
               <!-- </li> -->
               <!-- <li> -->
-                <form id='logout-form' action="/logout" method='POST'>
-                  @csrf
-                  <button class="btn btn-link text-white" type='submit'>Logout</button>
-                </form>
+              <form id='logout-form' action="/logout" method='POST'>
+                @csrf
+                <button class="btn btn-link text-white" type='submit'>Logout</button>
+              </form>
               </li>
             </ul>
             <!-- <form class="form&#45;inline my&#45;2 my&#45;lg&#45;0"> -->
@@ -76,7 +76,7 @@
               <a class="nav-link" href="#">Delete Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Make Order</a>
+              <a class="nav-link" href="/">Make Order</a>
             </li>
           </ul>
         </nav>
@@ -121,6 +121,7 @@
     </div>
 
     <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script type="text/javascript" src="js/jquery-3.2.1.slim.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>

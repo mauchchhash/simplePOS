@@ -1,14 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class="row">
-    <div class="col-sm-4">
-      <div class="card my-3">
-        <img class="card-img-top" src="http://via.placeholder.com/350x150" alt="Card image cap">
-        <div class="card-body">
-          <span>Fernando</span>
+
+  <div class="card-deck">
+    <div class="card bg-primary">
+      <a href="#">
+        <div class="card-body text-center">
+          <br>
+          <h1 class="card-text text-white">Beverages</h1>
+          <br>
         </div>
-      </div>
+      </a>
+    </div>
+    <div class="card bg-warning">
+      <a href="#">
+        <div class="card-body text-center">
+          <br>
+          <h1 class="card-text text-dark">Foods</h1>
+          <br>
+        </div>
+      </a>
+    </div>
+    <div class="card bg-success">
+      <a href="#">
+        <div class="card-body text-center">
+          <br>
+          <h1 class="card-text text-white">Others</h1>
+          <br>
+        </div>
+      </a>
     </div>
   </div>
 @endsection
