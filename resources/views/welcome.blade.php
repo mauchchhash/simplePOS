@@ -49,6 +49,7 @@
           @if($product->category == 'beverage')
             <div class='col-lg-4'>
               <div class="my-lg-2 card bg-primary" @click="addProduct({{$product->name}})">
+              <!-- <div class="my&#45;lg&#45;2 card bg&#45;primary"> -->
                 <a href="#">
                   <div class="card-body text-center">
                     <h3 class="card-text text-white">{{$product->name}}</h3>
@@ -129,3 +130,7 @@
     </div>
   </div>
 @endsection
+@include('footer')
+// <script>
+//   console.log(products);
+// </script>

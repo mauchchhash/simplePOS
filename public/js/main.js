@@ -10,6 +10,7 @@ var pos = new Vue({
   el: '#pos-row',
   data: {
     activeChoice: 'category',
+    products: products,
     productsInOrder: []
   },
   methods: {
