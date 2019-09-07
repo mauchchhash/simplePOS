@@ -18,9 +18,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
 
-  Route::get('/', function () {
-    return view('welcome');
-  });
+  Route::get('/', 'POSController@index');
+  // Route::get('/', function () {
+  //   return view('welcome');
+  // });
 
   Route::get('/products', 'ProductController@index');
   Route::get('/products/create', 'ProductController@create');
