@@ -9,7 +9,8 @@ $(document).ready(function() {
 var pos = new Vue({
   el: '#pos-row',
   data: {
-    activeChoice: 'category'
+    activeChoice: 'category',
+    productsInOrder: []
   },
   methods: {
     setCategory: function(){
@@ -23,6 +24,9 @@ var pos = new Vue({
     },
     setOther: function(){
       this.activeChoice = 'other';
+    },
+    addProduct: function(product){
+      this.productsInOrder.push(product);
     }
   }
 });
