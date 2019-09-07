@@ -11,18 +11,18 @@ var pos = new Vue({
   data: {
     activeChoice: 'category'
   },
-  computed:{
-    setCategory(){
-      this.activeChoice = 'category'
+  methods: {
+    setCategory: function(){
+      this.activeChoice = 'category';
     },
-    setBeverage(){
-      this.activeChoice = 'beverage'
+    setBeverage: function(){
+      this.activeChoice = 'beverage';
     },
-    setFood(){
-      this.activeChoice = 'food'
+    setFood: function(){
+      this.activeChoice = 'food';
     },
-    setOther(){
-      this.activeChoice = 'other'
+    setOther: function(){
+      this.activeChoice = 'other';
     }
   }
-})
+});
