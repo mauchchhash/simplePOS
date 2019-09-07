@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
       $table->string('name');
       $table->string('category');
       $table->unsignedBigInteger('price');
+      $table->boolean('display')->default(true);
       $table->timestamps();
     });
   }

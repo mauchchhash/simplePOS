@@ -10,6 +10,7 @@ $factory->define(Product::class, function (Faker $faker) {
   return [
     'name' => $faker->words(2,true),
     'category' => $categoryArray[$faker->randomDigit % 3],
-    'price' => $faker->randomDigit
+    'price' => $faker->randomDigit,
+    'display' => true
   ];
 });
