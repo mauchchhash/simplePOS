@@ -48,7 +48,7 @@
         @foreach($products as $product)
           @if($product->category == 'beverage')
             <div class='col-lg-4'>
-              <div class="my-lg-2 card bg-primary" @click="addProduct({{$product->name}})">
+              <div class="my-lg-2 card bg-primary" @click="addProduct('{{$product->name}}')">
               <!-- <div class="my&#45;lg&#45;2 card bg&#45;primary"> -->
                 <a href="#">
                   <div class="card-body text-center">
