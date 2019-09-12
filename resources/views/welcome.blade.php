@@ -48,89 +48,92 @@
         @foreach($products as $product)
           @if($product->category == 'beverage')
             <div class='col-lg-4'>
-              <div class="my-lg-2 card bg-primary" @click="addProduct('{{$product->name}}')">
-              <!-- <div class="my&#45;lg&#45;2 card bg&#45;primary"> -->
+              <div class="my-lg-2 card bg-primary" @click="addProduct('{{$product->name}}', '{{$product->id}}')">
+                <!-- <div class="my&#45;lg&#45;2 card bg&#45;primary"> -->
                 <a href="#">
                   <div class="card-body text-center">
                     <h3 class="card-text text-white">{{$product->name}}</h3>
                     <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
                   </div>
                 </a>
+                </div>
               </div>
+            @endif
+          @endforeach
             </div>
-          @endif
-        @endforeach
       </div>
-    </div>
 
-    <div class="card-deck col-md-8" v-if="activeChoice == 'food'">
-      <div class='col-lg-12'>
-        <div class="my-lg-1 card bg-secendary" @click='setCategory'>
-          <a href="#">
-            <!-- <div class="card&#45;body text&#45;center"> -->
-            <br>
-            <h4 class="card-text text-dark text-center">Go Back</h4>
-            <br>
-            <!-- </div> -->
-          </a>
+      <div class="card-deck col-md-8" v-if="activeChoice == 'food'">
+        <div class='col-lg-12'>
+          <div class="my-lg-1 card bg-secendary" @click='setCategory'>
+            <a href="#">
+              <!-- <div class="card&#45;body text&#45;center"> -->
+              <br>
+              <h4 class="card-text text-dark text-center">Go Back</h4>
+              <br>
+              <!-- </div> -->
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          @foreach($products as $product)
+            @if($product->category == 'food')
+              <div class='col-lg-4'>
+                <div class="my-lg-2 card bg-warning">
+                  <a href="#">
+                    <div class="card-body text-center">
+                      <h3 class="card-text text-dark">{{$product->name}}</h3>
+                      <h3 class="card-text text-dark">{{$product->price . ' Taka'}}</h3>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            @endif
+          @endforeach
         </div>
       </div>
-      <div class="row">
-        @foreach($products as $product)
-          @if($product->category == 'food')
-            <div class='col-lg-4'>
-              <div class="my-lg-2 card bg-warning">
-                <a href="#">
-                  <div class="card-body text-center">
-                    <h3 class="card-text text-dark">{{$product->name}}</h3>
-                    <h3 class="card-text text-dark">{{$product->price . ' Taka'}}</h3>
-                  </div>
-                </a>
-              </div>
-            </div>
-          @endif
-        @endforeach
-      </div>
-    </div>
 
-    <div class="card-deck col-md-8" v-if="activeChoice == 'other'">
-      <div class='col-lg-12'>
-        <div class="my-lg-1 card bg-secendary" @click='setCategory'>
-          <a href="#">
-            <!-- <div class="card&#45;body text&#45;center"> -->
-            <br>
-            <h4 class="card-text text-dark text-center">Go Back</h4>
-            <br>
-            <!-- </div> -->
-          </a>
+      <div class="card-deck col-md-8" v-if="activeChoice == 'other'">
+        <div class='col-lg-12'>
+          <div class="my-lg-1 card bg-secendary" @click='setCategory'>
+            <a href="#">
+              <!-- <div class="card&#45;body text&#45;center"> -->
+              <br>
+              <h4 class="card-text text-dark text-center">Go Back</h4>
+              <br>
+              <!-- </div> -->
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          @foreach($products as $product)
+            @if($product->category == 'other')
+              <div class='col-lg-4'>
+                <div class="my-lg-2 card bg-success">
+                  <a href="#">
+                    <div class="card-body text-center">
+                      <h3 class="card-text text-white">{{$product->name}}</h3>
+                      <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            @endif
+          @endforeach
         </div>
       </div>
-      <div class="row">
-        @foreach($products as $product)
-          @if($product->category == 'other')
-            <div class='col-lg-4'>
-              <div class="my-lg-2 card bg-success">
-                <a href="#">
-                  <div class="card-body text-center">
-                    <h3 class="card-text text-white">{{$product->name}}</h3>
-                    <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
-                  </div>
-                </a>
-              </div>
+      <div class="card col-md-4 bg-info">
+        <h2 class="card text-center my-2 text-dark">Order List</h2>
+        <div class="card text-center bg-warning text-dark">
+          <form action="/orders" method="POST">
+            @csrf
+            <div v-for="product in productsInOrder">
+              <input type="number" :name="'products['+ product.name +']'" v-model.number='product.quantity'>@{{product.name}}
             </div>
-          @endif
-        @endforeach
+            <button type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
-    <div class="card col-md-4 bg-info">
-      <h2 class="card text-center my-2 text-dark">Order List</h2>
-      <div class="card text-center bg-warning text-dark">
-        <p v-for="product in productsInOrder">@{{product}}</p>
-      </div>
-    </div>
-  </div>
-@endsection
-@include('footer')
-// <script>
-//   console.log(products);
-// </script>
+  @endsection
+  @include('footer')

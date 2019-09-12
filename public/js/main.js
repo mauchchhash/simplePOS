@@ -26,7 +26,12 @@ var pos = new Vue({
     setOther: function(){
       this.activeChoice = 'other';
     },
-    addProduct: function(product){
+    addProduct: function(productName, productId){
+      product = {};
+      product.name = productName;
+      product.quantity = 1;
+      product.id = productId;
+      console.log(product);
       this.productsInOrder.push(product);
     }
   }
