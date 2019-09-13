@@ -124,11 +124,15 @@
       </div>
       <div class="card col-md-4 bg-info">
         <h2 class="card text-center my-2 text-dark">Order List</h2>
-        <div class="card text-center bg-warning text-dark">
+        <div class="text-center text-white">
           <form action="/orders" method="POST">
             @csrf
             <div v-for="product in productsInOrder">
-              <input type="number" :name="'products['+ product.name +']'" v-model.number='product.quantity'>@{{product.name}}
+              <div class='row'>
+                <div class='form-group'>
+                  <input type="number" :name="'products['+ product.name +']'" v-model.number='product.quantity' class=''>@{{product.name}}
+                </div>
+              </div>
             </div>
             <button type="submit">Submit</button>
           </form>
