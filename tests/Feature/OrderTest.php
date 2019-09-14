@@ -35,7 +35,7 @@ class OrderTest extends TestCase
     $id1 = Product::where('name', $attributes1['name'])->first()->id;
     $id2 = Product::where('name', $attributes2['name'])->first()->id;
     $id3 = Product::where('name', $attributes3['name'])->first()->id;
-    
+
     $quantity1 = $this->faker->randomDigit();
     $quantity2 = $this->faker->randomDigit();
     $quantity3 = $this->faker->randomDigit();
@@ -78,20 +78,22 @@ class OrderTest extends TestCase
     $id1 = Product::where('name', $attributes1['name'])->first()->id;
     $id2 = Product::where('name', $attributes2['name'])->first()->id;
     $id3 = Product::where('name', $attributes3['name'])->first()->id;
-    
+
     $quantity1 = $this->faker->randomDigit();
     $quantity2 = $this->faker->randomDigit();
     $quantity3 = $this->faker->randomDigit();
 
-    $orderAttributes = [
-      [ 'product_id' => $id1, 'quantity' => $quantity1, 'price' => $this->faker->randomDigit],
-      [ 'product_id' => $id2, 'quantity' => $quantity2, 'price' => $this->faker->randomDigit],
-      [ 'product_id' => $id3, 'quantity' => $quantity3, 'price' => $this->faker->randomDigit],
-    ];
+    $orderAttributes = [ 'products' => [
+      $id1 => ['quantity' => $quantity1, 'priceInOrder' => $this->faker->randomDigit],
+      $id1 => ['quantity' => $quantity2, 'priceInOrder' => $this->faker->randomDigit],
+      $id1 => ['quantity' => $quantity3, 'priceInOrder' => $this->faker->randomDigit],
+    ]
+  ];
     $orderAttributes['total_amount'] = $this->faker->randomDigit;
 
-    $this->post( '/orders', $orderAttributes)->assertRedirect('/home');
+    $this->post( '/orders', $orderAttributes)->assertRedirect('/');
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id1, 'quantity' => $quantity1]);
+    // dd('hi');
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id2, 'quantity' => $quantity2]);
     $this->assertDatabaseHas('order_entries', [ 'product_id' => $id3, 'quantity' => $quantity3]);
   }

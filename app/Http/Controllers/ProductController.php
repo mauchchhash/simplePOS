@@ -14,7 +14,7 @@ class ProductController extends Controller
 
   public function create()
   {
-    //
+    return view('products.create');
   }
 
   public function store(Request $request)
@@ -23,7 +23,7 @@ class ProductController extends Controller
       request(['name', 'category', 'price'])
     );
 
-    return redirect('/home');
+    return redirect('/');
   }
 
   public function show(Product $product)

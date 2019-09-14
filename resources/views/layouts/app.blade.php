@@ -5,8 +5,8 @@
     <title>Bootstrap 4</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap -->
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
   </head>
 
   <body>
@@ -59,29 +59,31 @@
         </nav>
       </div>
     </header>
-    <section class="navigation">
-      <div class="container">
-        <nav class="navigation-nav">
-          <ul class="nav justify-content-center">
-            <!-- <li class="nav&#45;item active"> -->
-            <!--   <a class="nav&#45;link" data&#45;toggle="modal" data&#45;target="#modal&#45;example" href="#">Add Product</a> -->
-            <!-- </li> -->
-            <li class="nav-item">
-              <a class="nav-link" href="#">Add Product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Update Product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Delete Product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/">Make Order</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </section>
+    @auth
+      <section class="navigation">
+        <div class="container">
+          <nav class="navigation-nav">
+            <ul class="nav justify-content-center">
+              <!-- <li class="nav&#45;item active"> -->
+              <!--   <a class="nav&#45;link" data&#45;toggle="modal" data&#45;target="#modal&#45;example" href="#">Add Product</a> -->
+              <!-- </li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="/products/create">Add Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Update Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Delete Product</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/">Make Order</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+    @endauth
     <main class="main-content my-5">
       <div class="container">
 

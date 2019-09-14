@@ -12,12 +12,15 @@ class OrderController extends Controller
   }
 
   public function store(Request $request){
-    dd($request->all());
-    // $order = Order::create( request(['total_amount']) );
+    $order = Order::create( request(['total_amount']) );
+    // dd($request['products']);
+    foreach($request['products'] as $key => $product){
+      $order->products()->attach($key, ['quantity' => $product['quantity'], 'price' => $product['priceInOrder']]);
+    }
     // foreach( request()->all() as $request ){
     //   $order->products()->attach($request['product_id'], ['quantity' => $request['quantity'], 'price' => $request['price']]);
     // }
 
-    return redirect('/home');
+    return redirect('/');
   }
 }
