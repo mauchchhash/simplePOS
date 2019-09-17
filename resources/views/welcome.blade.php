@@ -126,20 +126,40 @@
       <div class="text-center text-white">
         <form action="/orders" method="POST">
           @csrf
-          <div class='container'>
+          <div class='container-fluid'>
             <div v-for="product in productsInOrder">
-              <div class='row'>
-                <!-- <div class="col&#45;sm&#45;4"> -->
-                <div class='form-group'>
-                  <!-- <input type="number" :name="'products['+ product.id +']'" v&#45;model.number='product.quantity' @change="updatePrice(product.id, product.quantity)">@{{product.name}} -->
-                  <input type="number" :name="'products['+ product.id +'][quantity]'" v-model.number='product.quantity' @change="updatePrice(product.id, product.quantity)">@{{product.name}}
-                  <input type="number" :name="'products['+ product.id +'][priceInOrder]'" v-model.number='product.priceInOrder'>Taka
+              <div class="row">
+                <div class="col-3 px-0">
+                  @{{product.name}}
                 </div>
-                <!-- </div> -->
+                <div class="col-7 px-0">
+                  <input type="number" :name="'products['+ product.id +'][quantity]'" v-model.number='product.quantity' @change="updatePrice(product.id, product.quantity)">
+                  <input type="number" :name="'products['+ product.id +'][priceInOrder]'" v-model.number='product.priceInOrder'>
+                </div>
+                <div class="col-2 px-0">
+                  <p>Tk</p>
+                  <p>Qty</p>
+                </div>
               </div>
             </div>
-            Total: <input type="number" name="total_amount" v-model.number='orderAmount'>Taka
-            Cash:  <input type="number" v-model.number='cashByCustomer'>Taka
+
+            <p>--------------------------------------------</p>
+            <div class="row">
+              <div class="col-3">
+                <p>Total:</p>
+                <p>Cash:</p>
+              </div>
+              <div class="col-7">
+                <input type="number" name="total_amount" v-model.number='orderAmount'>
+                <input type="number" v-model.number='cashByCustomer'>
+              </div>
+              <div class="col-2">
+                <p>Tk</p>
+                <p>Tk</p>
+              </div>
+            </div>
+            <!-- Total: <input type="number" name="total_amount" v&#45;model.number='orderAmount'>Taka -->
+            <!-- Cash:  <input type="number" v&#45;model.number='cashByCustomer'>Taka -->
             <p>--------------------------------------------</p>
             Change:  <input type="number" v-model.number='changeMoney'>Taka
           </div>
