@@ -7,6 +7,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/u-custom.css')}}">
   </head>
 
   <body>
@@ -60,7 +61,7 @@
       </div>
     </header>
     @auth
-      <section class="navigation">
+      <section class="navigation upd-0">
         <div class="container">
           <nav class="navigation-nav">
             <ul class="nav justify-content-center">
@@ -71,11 +72,11 @@
                 <a class="nav-link" href="/products/create">Add Product</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Update Product</a>
+                <a class="nav-link" href="/products">Product List</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Delete Product</a>
-              </li>
+              <!-- <li class="nav&#45;item"> -->
+              <!--   <a class="nav&#45;link" href="#">Delete Product</a> -->
+              <!-- </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="/">Make Order</a>
               </li>

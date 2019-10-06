@@ -2,7 +2,7 @@
 
 @section('content')
   <div class="row" id="pos-row">
-    <div class="card-deck col-md-8" v-if="activeChoice == 'category'">
+    <div class="col-md-8" v-if="activeChoice == 'category'">
       <div class="card bg-primary" @click="setBeverage">
         <a href="#">
           <div class="card-body text-center">
@@ -62,7 +62,7 @@
       </div>
     </div>
 
-    <div class="card-deck col-md-8" v-if="activeChoice == 'food'">
+    <div class="col-md-8" v-if="activeChoice == 'food'">
       <div class='col-lg-12'>
         <div class="my-lg-1 card bg-secendary" @click='setCategory'>
           <a href="#">
@@ -92,7 +92,7 @@
       </div>
     </div>
 
-    <div class="card-deck col-md-8" v-if="activeChoice == 'other'">
+    <div class="col-md-8" v-if="activeChoice == 'other'">
       <div class='col-lg-12'>
         <div class="my-lg-1 card bg-secendary" @click='setCategory'>
           <a href="#">
@@ -137,8 +137,8 @@
                   <input type="number" :name="'products['+ product.id +'][priceInOrder]'" v-model.number='product.priceInOrder'>
                 </div>
                 <div class="col-2 px-0">
-                  <p>Tk</p>
                   <p>Qty</p>
+                  <p>Tk</p>
                 </div>
               </div>
             </div>

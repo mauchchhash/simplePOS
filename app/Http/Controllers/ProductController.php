@@ -9,7 +9,12 @@ class ProductController extends Controller
 {
   public function index()
   {
-    //
+    \JavaScript::put([
+      'products' => Product::all(),
+      'foo' => 'bar'
+    ]);
+    $products = Product::all();
+    return view('products.index', compact('products'));
   }
 
   public function create()
@@ -33,7 +38,6 @@ class ProductController extends Controller
 
   public function edit(Product $product)
   {
-    //
   }
 
   public function update(Request $request, Product $product)

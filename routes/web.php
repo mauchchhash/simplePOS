@@ -25,8 +25,7 @@ Route::middleware('auth')->group(function(){
 
   Route::get('/products', 'ProductController@index');
   Route::get('/products/create', 'ProductController@create');
-  Route::get('/products/{product}', 'ProductController@show');
-  Route::get('/products/edit/{product}', 'ProductController@edit');
+  // Route::get('/products/{product}', 'ProductController@show');
 
   Route::post('/products', 'ProductController@store');
   Route::delete('/products/{product}', 'ProductController@destroy');
