@@ -15,7 +15,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::middleware('auth')->group(function(){
 
   Route::get('/', 'POSController@index');
@@ -28,6 +27,7 @@ Route::middleware('auth')->group(function(){
   // Route::get('/products/{product}', 'ProductController@show');
 
   Route::post('/products', 'ProductController@store');
+  Route::get('/products/{product}', 'ProductController@edit');
   Route::delete('/products/{product}', 'ProductController@destroy');
   Route::patch('/products/{product}', 'ProductController@update');
 
