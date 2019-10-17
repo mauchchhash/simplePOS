@@ -1,7 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1 class="bg-success">Add a product</h1>
+  <!-- <h1 class="bg&#45;success">Update a product</h1> -->
+  <div class="card bg-success">
+    <div class="car-body text-center">
+      <br>
+      <h3 class="card-text text-white text-center">Update {{$product->name}}</h3>
+      <br>
+    </div>
+  </div>
   <br>
   <form action="/products/{{$product->id}}" method="POST" class="form">
     @csrf

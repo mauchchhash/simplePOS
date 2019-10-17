@@ -52,7 +52,7 @@
                 <a href="#">
                   <div class="card-body text-center">
                     <h3 class="card-text text-white">{{$product->name}}</h3>
-                    <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
+                    <h6 class="card-text text-white">{{$product->price . ' Taka'}}</h6>
                   </div>
                 </a>
               </div>
@@ -82,7 +82,7 @@
                 <a href="#">
                   <div class="card-body text-center">
                     <h3 class="card-text text-dark">{{$product->name}}</h3>
-                    <h3 class="card-text text-dark">{{$product->price . ' Taka'}}</h3>
+                    <h6 class="card-text text-dark">{{$product->price . ' Taka'}}</h6>
                   </div>
                 </a>
               </div>
@@ -112,7 +112,7 @@
                 <a href="#">
                   <div class="card-body text-center">
                     <h3 class="card-text text-white">{{$product->name}}</h3>
-                    <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
+                    <h6 class="card-text text-white">{{$product->price . ' Taka'}}</h6>
                   </div>
                 </a>
               </div>
@@ -121,23 +121,27 @@
         @endforeach
       </div>
     </div>
-    <div class="card col-md-4 bg-info">
+    <div class="card col-md-4 bg-white">
       <h2 class="card text-center my-2 text-dark">Order List</h2>
-      <div class="text-center text-white">
+      <div class="text-center text-dark">
         <form action="/orders" method="POST">
           @csrf
           <div class='container-fluid'>
             <div v-for="product in productsInOrder">
               <div class="row">
-                <div class="col-3 px-0">
-                  @{{product.name}}
+                <div class="col-3 px-0 border">
+                    @{{product.name}}
                 </div>
                 <div class="col-7 px-0">
                   <input type="number" :name="'products['+ product.id +'][quantity]'" v-model.number='product.quantity' @change="updatePrice(product.id, product.quantity)">
                   <input type="number" :name="'products['+ product.id +'][priceInOrder]'" v-model.number='product.priceInOrder'>
                 </div>
                 <div class="col-2 px-0">
-                  <p>Qty</p>
+                  <p>Qty
+                  <button type="button" class="close text-danger" aria-label="Close" @click=removeFromOrder(product.id)>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  </p>
                   <p>Tk</p>
                 </div>
               </div>
@@ -145,7 +149,7 @@
 
             <p>--------------------------------------------</p>
             <div class="row">
-              <div class="col-3">
+              <div class="col-3 border">
                 <p>Total:</p>
                 <p>Cash:</p>
               </div>
@@ -163,7 +167,9 @@
             <p>--------------------------------------------</p>
             Change:  <input type="number" v-model.number='changeMoney'>Taka
           </div>
-          <button type="submit">Submit</button>
+          <div>
+            <button class='btn btn-info mt-1' type="submit">Submit</button>
+          </div>
         </form>
       </div>
     </div>

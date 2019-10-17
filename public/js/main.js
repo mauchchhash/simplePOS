@@ -44,5 +44,11 @@ var pos = new Vue({
       var i = this.productsInOrder.findIndex(r => r.id == productId);
       this.productsInOrder[i].priceInOrder = productQuantity * this.productsInOrder[i].price;
     },
+    removeFromOrder: function(productId, productQuantity){
+      var i = this.productsInOrder.findIndex(r => r.id == productId);
+      console.log(i);
+      this.productsInOrder.splice(i,1);
+      // this.productsInOrder[i].priceInOrder = productQuantity * this.productsInOrder[i].price;
+    },
   }
 });

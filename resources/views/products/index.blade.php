@@ -11,7 +11,7 @@
                 <a href="{{ url('/products/'.$product->id) }}">
                   <div class="card-body text-center">
                     <h3 class="card-text text-white">{{$product->name}}</h3>
-                    <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
+                    <h6 class="card-text text-white">{{$product->price . ' Taka'}}</h6>
                   </div>
                 </a>
               </div>
@@ -30,7 +30,7 @@
                 <a href="{{ url('/products/'.$product->id) }}">
                   <div class="card-body text-center">
                     <h3 class="card-text text-dark">{{$product->name}}</h3>
-                    <h3 class="card-text text-dark">{{$product->price . ' Taka'}}</h3>
+                    <h6 class="card-text text-dark">{{$product->price . ' Taka'}}</h6>
                   </div>
                 </a>
               </div>
@@ -49,7 +49,7 @@
                 <a href="{{ url('/products/'.$product->id) }}">
                   <div class="card-body text-center">
                     <h3 class="card-text text-white">{{$product->name}}</h3>
-                    <h3 class="card-text text-white">{{$product->price . ' Taka'}}</h3>
+                    <h6 class="card-text text-white">{{$product->price . ' Taka'}}</h6>
                   </div>
                 </a>
               </div>

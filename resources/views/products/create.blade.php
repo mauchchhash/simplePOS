@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-  <h1 class="bg-success">Add a product</h1>
+  <div class="card bg-success">
+    <div class="car-body text-center">
+      <br>
+        <h3 class="card-text text-white text-center">Add a Product</h3>
+      <br>
+    </div>
+  </div>
   <br>
   <form action="/products" method="POST" class="form">
     @csrf
