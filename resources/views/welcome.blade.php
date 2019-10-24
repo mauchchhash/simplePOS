@@ -168,7 +168,7 @@
             Change:  <input type="number" v-model.number='changeMoney'>Taka
           </div>
           <div>
-            <button class='btn btn-info mt-1' type="submit">Submit</button>
+            <button class='btn btn-info mt-1' type="submit">Confirm Order</button>
           </div>
         </form>
       </div>
