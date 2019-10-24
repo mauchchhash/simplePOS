@@ -149,15 +149,15 @@
 
             <p>--------------------------------------------</p>
             <div class="row">
-              <div class="col-3 border">
+              <div class="col-3 px-0 border">
                 <p>Total:</p>
                 <p>Cash:</p>
               </div>
-              <div class="col-7">
+              <div class="col-7 px-0">
                 <input type="number" name="total_amount" v-model.number='orderAmount'>
                 <input type="number" v-model.number='cashByCustomer'>
               </div>
-              <div class="col-2">
+              <div class="col-2 px-0">
                 <p>Tk</p>
                 <p>Tk</p>
               </div>
