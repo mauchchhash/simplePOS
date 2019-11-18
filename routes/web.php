@@ -17,7 +17,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
 
-  Route::get('/', 'POSController@index');
+  Route::get('/order', 'POSController@index');
+  Route::get('/', 'POSController@showReport');
   // Route::get('/', function () {
   //   return view('welcome');
   // });
@@ -33,4 +34,6 @@ Route::middleware('auth')->group(function(){
 
   Route::get('/orders/create', 'OrderController@create');
   Route::post('/orders', 'OrderController@store');
+
+  Route::post('/report', 'POSController@getReport');
 });

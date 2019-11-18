@@ -28,4 +28,10 @@ class UsersTest extends TestCase
     $this->get('/home')->assertStatus(200);
   }
 
+  /** @test */
+  public function testintest(){
+	  $user = factory(User::class)->create();
+	  dd($user->updated_at);
+  }
+
 }

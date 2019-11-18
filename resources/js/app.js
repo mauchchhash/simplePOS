@@ -1,32 +1,84 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
-
 require('./bootstrap');
 
-window.Vue = require('vue');
+window.VCalender = require('v-calendar');
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+// Vue.use(VCalender, {
+// });
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-const app = new Vue({
-    el: '#app',
+new Vue({
+	el: '#pos-row',
+	data: {
+		range: {
+			start: new Date(), // Jan 16th, 2018
+			end: new Date()    // Jan 19th, 2018
+		},
+		reportShowSection: 'report',
+		activeChoice: 'category',
+		returnedResult: '',
+		products: products,
+		productsInOrder: [],
+		cashByCustomer: 0,
+	},
+	computed: {
+		orderAmount: function(){
+			return this.productsInOrder.reduce(function(sum, i){
+				return Number(sum) + Number(i.priceInOrder);
+			}, 0);
+		},
+		changeMoney: function(){
+			return Number(this.cashByCustomer) - Number(this.orderAmount);
+		},
+	},
+	methods: {
+		setCategory: function(){
+			this.activeChoice = 'category';
+		},
+		setBeverage: function(){
+			this.activeChoice = 'beverage';
+		},
+		setFood: function(){
+			this.activeChoice = 'food';
+		},
+		setOther: function(){
+			this.activeChoice = 'other';
+		},
+		addProduct: function(productName, productId, productPrice){
+			var product = {};
+			product.name = productName;
+			product.quantity = 1;
+			product.id = productId;
+			product.price = productPrice;
+			product.priceInOrder = productPrice;
+			// console.log(product);
+			this.productsInOrder.push(product);
+			// console.log(this.productsInOrder);
+		},
+		updatePrice: function(productId, productQuantity){
+			var i = this.productsInOrder.findIndex(r => r.id == productId);
+			this.productsInOrder[i].priceInOrder = productQuantity * this.productsInOrder[i].price;
+		},
+		removeFromOrder: function(productId, productQuantity){
+			var i = this.productsInOrder.findIndex(r => r.id == productId);
+			console.log(i);
+			this.productsInOrder.splice(i,1);
+			// this.productsInOrder[i].priceInOrder = productQuantity * this.productsInOrder[i].price;
+		},
+		reportFormSubmitted: function(){
+			axios.post('/report', {
+				startDate: this.range.start,
+				endDate: this.range.end
+			}).then( (response) => {
+				this.reportShowSection = 'result';
+				this.returnedResult = response.data;
+				console.log(response.data);
+			})
+			.catch();
+		}
+	},
+	mounted(){
+		// console.log(this.range.start);
+		// console.log(this.range.end);
+	}
 });

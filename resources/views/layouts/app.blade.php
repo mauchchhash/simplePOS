@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/main.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('css/u-custom.css')}}">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
   </head>
 
   <body>
@@ -69,6 +70,9 @@
               <!--   <a class="nav&#45;link" data&#45;toggle="modal" data&#45;target="#modal&#45;example" href="#">Add Product</a> -->
               <!-- </li> -->
               <li class="nav-item">
+                <a class="nav-link" href="/">Reports</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="/products/create">Add Product</a>
               </li>
               <li class="nav-item">
@@ -78,7 +82,7 @@
               <!--   <a class="nav&#45;link" href="#">Delete Product</a> -->
               <!-- </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="/">Make Order</a>
+                <a class="nav-link" href="/order">Make Order</a>
               </li>
             </ul>
           </nav>
@@ -128,7 +132,8 @@
     <script type="text/javascript" src="js/jquery-3.2.1.slim.min.js"></script>
     <script type="text/javascript" src="js/popper.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
+    <!-- <script type="text/javascript" src="js/main.js"></script> -->
+    <script type="text/javascript" src="{{mix('js/app.js')}}"></script>
   </body>
 
 </html>
