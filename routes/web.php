@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 Auth::routes();
 
@@ -17,23 +17,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
 
-  Route::get('/order', 'POSController@index');
-  Route::get('/', 'POSController@showReport');
-  // Route::get('/', function () {
-  //   return view('welcome');
-  // });
+	Route::get('/order', 'POSController@index');
+	Route::get('/', 'POSController@showReport');
+	// Route::get('/', function () {
+	//   return view('welcome');
+	// });
 
-  Route::get('/products', 'ProductController@index');
-  Route::get('/products/create', 'ProductController@create');
-  // Route::get('/products/{product}', 'ProductController@show');
+	Route::get('/products', 'ProductController@index');
+	Route::get('/products/create', 'ProductController@create');
+	// Route::get('/products/{product}', 'ProductController@show');
 
-  Route::post('/products', 'ProductController@store');
-  Route::get('/products/{product}', 'ProductController@edit');
-  Route::delete('/products/{product}', 'ProductController@destroy');
-  Route::patch('/products/{product}', 'ProductController@update');
+	Route::post('/products', 'ProductController@store');
+	Route::get('/products/{product}', 'ProductController@edit');
+	Route::delete('/products/{product}', 'ProductController@destroy');
+	Route::patch('/products/{product}', 'ProductController@update');
 
-  Route::get('/orders/create', 'OrderController@create');
-  Route::post('/orders', 'OrderController@store');
+	Route::get('/orders/create', 'OrderController@create');
+	Route::get('/orders/{order}', 'OrderController@show');
+	Route::post('/orders', 'OrderController@store');
 
-  Route::post('/report', 'POSController@getReport');
+	Route::post('/report', 'POSController@getReport');
 });

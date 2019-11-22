@@ -6,11 +6,11 @@
 			<h3>Please select your date range:</h3>
 			<br>
 			<!-- <div> -->
-			<!-- 	<v&#45;date&#45;picker -->
-			<!-- 		:value="null" -->
-			<!-- 		mode="range" -->
-			<!-- 		v&#45;model='range' -->
-			<!-- 		/> -->
+			<!--	<v&#45;date&#45;picker -->
+			<!--		:value="null" -->
+			<!--		mode="range" -->
+			<!--		v&#45;model='range' -->
+			<!--		/> -->
 			<!-- </div> -->
 			<div>
 
@@ -30,37 +30,26 @@
 		</div>
 		<div v-show="reportShowSection == 'result'">
 			<div>
-				<!-- <h2 class='text&#45;center'>Total products sold: <span class='text&#45;primary'>@{{returnedResult.total_products_sold}}</span></h2> -->
-				<!-- <h2 class='text&#45;center'>Total revenue: <span class='text&#45;primary'>@{{returnedResult.total_revenue}}</span></h2> -->
+				<h2 class='text-center'>Total Orders: <span class='text-primary'>@{{ returnedResult.its_size }}</span></h2>
+				<h2 class='text-center'>Total revenue: <span class='text-primary'>@{{returnedResult.total_revenue}}</span></h2>
 			</div>
-			@{{returnedResult}}
+			<!-- @{{returnedResult}} -->
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th scope="col">#</th>
-						<th scope="col">First</th>
-						<th scope="col">Last</th>
-						<th scope="col">Handle</th>
+						<th scope="col">Date</th>
+						<th scope="col">Sold Amount</th>
+						<th scope="col">Action</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
+					<tr v-for="order in returnedResult.orders">
+						<th scope="row">@{{order.index}}</th>
+						<!-- <td>@{{(new Date(Date.parse(order.created_at))).toDateString().split(" ").slice(1,4).join(" ")}}</td> -->
+						<td>@{{order.created_at}}</td>
+						<td>@{{order.total_amount}} Taka</td>
+						<td><a href="#" @click.prevent="goToOrderClicked(order.id)">Go To Order</a></td>
 					</tr>
 				</tbody>
 			</table>

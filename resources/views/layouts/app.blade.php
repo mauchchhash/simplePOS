@@ -129,9 +129,9 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="js/jquery-3.2.1.slim.min.js"></script>
-    <script type="text/javascript" src="js/popper.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-3.2.1.slim.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-3.2.1.slim.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-3.2.1.slim.min.js')}}"></script>
     <!-- <script type="text/javascript" src="js/main.js"></script> -->
     <script type="text/javascript" src="{{mix('js/app.js')}}"></script>
   </body>

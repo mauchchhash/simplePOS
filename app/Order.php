@@ -10,7 +10,7 @@ class Order extends Model
   protected $guarded = [];
 
   public function products(){
-    return $this->belongsToMany(Product::class, 'order_entries');
+	  return $this->belongsToMany(Product::class, 'order_entries')->withPivot('quantity', 'price');
   }
 
   public function path(){

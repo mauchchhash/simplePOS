@@ -49270,7 +49270,18 @@ new Vue({
       }).then(function (response) {
         _this.reportShowSection = 'result';
         _this.returnedResult = response.data;
-        console.log(response.data);
+
+        _this.returnedResult.orders.forEach(function (order) {
+          return order.created_at = new Date(Date.parse(order.created_at)).toDateString().split(" ").slice(1, 4).join(" ");
+        }); // console.log(response.data);
+
+      })["catch"]();
+    },
+    goToOrderClicked: function goToOrderClicked(orderId) {
+      // console.log('/orders/'+orderId);
+      axios.get('/orders/' + orderId).then(function (response) {
+        console.log(response.data.order.products[0].pivot.quantity);
+        console.log(response.data.order.products[0].pivot.price);
       })["catch"]();
     }
   },
