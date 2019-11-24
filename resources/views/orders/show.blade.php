@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-	<?php dd($order); ?>
 	<div id='pos-row'>
 		<h2 class='text-center'>Order date and Time: <span class='text-success'>{{$order->created_at}}</span></h2>
 		<h2 class='text-center'>Order Amount: <span class='text-success'>{{$order->total_amount}} Taka</span></h2>

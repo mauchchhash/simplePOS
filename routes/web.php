@@ -37,4 +37,5 @@ Route::middleware('auth')->group(function(){
 	Route::post('/orders', 'OrderController@store');
 
 	Route::post('/report', 'POSController@getReport');
+	Route::post('/productsReport/{product}', 'ReportController@getReportByProduct');
 });

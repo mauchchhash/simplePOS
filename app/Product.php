@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Order;
+use App\OrderEntry;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -18,6 +19,6 @@ class Product extends Model
   }
 
   public function orders(){
-    return $this->belongsToMany(Order::class, 'order_entries');
+	  return $this->belongsToMany(Order::class, 'order_entries')->using(OrderEntry::class)->withTimestamps();
   }
 }

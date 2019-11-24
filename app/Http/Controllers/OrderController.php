@@ -12,6 +12,7 @@ class OrderController extends Controller
 	}
 
 	public function store(Request $request){
+		// dd($request->all());
 		$order = Order::create( request(['total_amount']) );
 		// dd($request['products']);
 		foreach($request['products'] as $key => $product){

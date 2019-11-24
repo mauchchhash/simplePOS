@@ -14,9 +14,12 @@ new Vue({
 			start: new Date(), // Jan 16th, 2018
 			end: new Date()    // Jan 19th, 2018
 		},
+		returnedProductReport: [],
 		reportShowSection: 'report',
+		previousSection: 'report',
 		activeChoice: 'category',
 		returnedResult: '',
+		returnedOrder: [],
 		products: products,
 		productsInOrder: [],
 		cashByCustomer: 0,
@@ -72,19 +75,37 @@ new Vue({
 			}).then( (response) => {
 				this.reportShowSection = 'result';
 				this.returnedResult = response.data;
+				// console.log(this.returnedResult);
 				this.returnedResult.orders.forEach((order) => order.created_at = (new Date(Date.parse(order.created_at))).toDateString().split(" ").slice(1,4).join(" "));
 				// console.log(response.data);
 			})
-			.catch();
+				.catch();
 		},
-		goToOrderClicked: function(orderId){
+		goToOrderClicked(orderId){
 			// console.log('/orders/'+orderId);
 			axios.get('/orders/'+orderId).then( (response) => {
-				console.log(response.data.order.products[0].pivot.quantity);
-				console.log(response.data.order.products[0].pivot.price);
+				this.returnedOrder = response.data.order;
+				this.reportShowSection = 'order';
+				// console.log(response.data.order.products[0].pivot.quantity);
+				// console.log(response.data.order.products[0].pivot.price);
 			})
-			.catch();
-		}
+				.catch();
+		},
+		getProductSales(productId){
+			axios.post('/productsReport/' + productId, {
+				startDate: this.range.start,
+				endDate: this.range.end
+			}).then( (response) => {
+				this.returnedProductReport = response.data;
+				this.returnedProductReport.order_entry.forEach( item => console.log(item) );
+				this.reportShowSection = 'product';
+			})
+				.catch();
+		},
+		// goBack(currentSection){
+		// 	this.reportShowSection = this.previousSection;
+		// 	this.previousSection = currentSection;
+		// }
 	},
 	mounted(){
 		// console.log(this.range.start);

@@ -49208,9 +49208,12 @@ new Vue({
       end: new Date() // Jan 19th, 2018
 
     },
+    returnedProductReport: [],
     reportShowSection: 'report',
+    previousSection: 'report',
     activeChoice: 'category',
     returnedResult: '',
+    returnedOrder: [],
     products: products,
     productsInOrder: [],
     cashByCustomer: 0
@@ -49269,7 +49272,7 @@ new Vue({
         endDate: this.range.end
       }).then(function (response) {
         _this.reportShowSection = 'result';
-        _this.returnedResult = response.data;
+        _this.returnedResult = response.data; // console.log(this.returnedResult);
 
         _this.returnedResult.orders.forEach(function (order) {
           return order.created_at = new Date(Date.parse(order.created_at)).toDateString().split(" ").slice(1, 4).join(" ");
@@ -49278,12 +49281,35 @@ new Vue({
       })["catch"]();
     },
     goToOrderClicked: function goToOrderClicked(orderId) {
+      var _this2 = this;
+
       // console.log('/orders/'+orderId);
       axios.get('/orders/' + orderId).then(function (response) {
-        console.log(response.data.order.products[0].pivot.quantity);
-        console.log(response.data.order.products[0].pivot.price);
+        _this2.returnedOrder = response.data.order;
+        _this2.reportShowSection = 'order'; // console.log(response.data.order.products[0].pivot.quantity);
+        // console.log(response.data.order.products[0].pivot.price);
       })["catch"]();
-    }
+    },
+    getProductSales: function getProductSales(productId) {
+      var _this3 = this;
+
+      axios.post('/productsReport/' + productId, {
+        startDate: this.range.start,
+        endDate: this.range.end
+      }).then(function (response) {
+        _this3.returnedProductReport = response.data;
+
+        _this3.returnedProductReport.order_entry.forEach(function (item) {
+          return console.log(item);
+        });
+
+        _this3.reportShowSection = 'product';
+      })["catch"]();
+    } // goBack(currentSection){
+    // 	this.reportShowSection = this.previousSection;
+    // 	this.previousSection = currentSection;
+    // }
+
   },
   mounted: function mounted() {// console.log(this.range.start);
     // console.log(this.range.end);
