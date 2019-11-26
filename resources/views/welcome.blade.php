@@ -30,7 +30,7 @@
 		</div>
 		<div v-show="reportShowSection == 'result'">
 			<div class='mb-3'>
-				<button class='btn btn-primary' @click.prevent="reportShowSection = 'report'">Go back</button>
+				<button class='btn btn-primary' @click.prevent="reportShowSection = 'report'">Go Back</button>
 			</div>
 			<div>
 				<h2 class='text-center'>Total Orders: <span class='text-primary'>@{{ returnedResult.its_size }}</span></h2>
@@ -64,7 +64,7 @@
 			{{-- <h2 class='text-center'>Order date and Time: <span class='text-success'>{{$order->created_at}}</span></h2> --}}
 			{{-- <h2 class='text-center'>Order Amount: <span class='text-success'>{{$order->total_amount}} Taka</span></h2> --}}
 			<div class='mb-3'>
-				<button class='btn btn-primary' @click.prevent="reportShowSection = 'result'">Go back</button>
+				<button class='btn btn-primary' @click.prevent="reportShowSection = 'result'">Go Back</button>
 			</div>
 			<table class="table table-striped">
 				<thead>
@@ -90,7 +90,7 @@
 		</div>
 		<div v-show="reportShowSection == 'product'">
 			<div class='mb-3'>
-				<button class='btn btn-primary' @click.prevent="reportShowSection = 'order'">Go back</button>
+				<button class='btn btn-primary' @click.prevent="reportShowSection = 'order'">Go Back</button>
 			</div>
 			<h1 class='text-center text-success'>@{{returnedProductReport.product_name}}</h1>
 			<h3 class='text-center text-success'>Unit Price: <span class='text-dark'>@{{returnedProductReport.product_price}} Tk.</span></h3>
