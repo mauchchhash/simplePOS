@@ -26,7 +26,7 @@ class OrderController extends Controller
 	}
 
 	public function show(Order $order){
-		$order = Order::with('products')->find($order)->first();
+		$order = Order::with('products')->find($order->id);
 		// dd($oo->products[0]->getOriginal()['pivot_order_id']);
 		// dd($oo->products[0]->getOriginal());
 		return compact('order');
