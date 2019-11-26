@@ -28,9 +28,9 @@ class POSController extends Controller
 	}
 
 	public function getReport(Request $request){
-		// $orders =  Order::whereBetween('updated_at', [$request->startDate, $request->endDate])->get()->sortBy('created_at');
-		$orders =  Order::all();
-		$orders = $orders->whereBetween('updated_at', [$request->startDate, $request->endDate])->sortBy('created_at');
+		$orders =  Order::whereBetween('updated_at', [$request->startDate, $request->endDate])->get()->sortBy('created_at');
+		// $orders =  Order::all();
+		// $orders = $orders->whereBetween('updated_at', [$request->startDate, $request->endDate])->sortBy('created_at');
 		$cnt = 1;
 		foreach($orders as $order){
 			$order['index'] = $cnt;
