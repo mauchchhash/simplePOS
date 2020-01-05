@@ -13,12 +13,13 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'POSController@index')->name('home');
 
 Route::middleware('auth')->group(function(){
 
 	Route::get('/order', 'POSController@index');
-	Route::get('/', 'POSController@showReport');
+	Route::get('/', 'POSController@index');
+	Route::get('/report', 'POSController@showReport');
 	// Route::get('/', function () {
 	//   return view('welcome');
 	// });

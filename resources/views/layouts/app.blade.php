@@ -70,7 +70,7 @@
               <!--   <a class="nav&#45;link" data&#45;toggle="modal" data&#45;target="#modal&#45;example" href="#">Add Product</a> -->
               <!-- </li> -->
               <li class="nav-item">
-                <a class="nav-link" href="/">Reports</a>
+                <a class="nav-link" href="/report">Reports</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/products/create">Add Product</a>
